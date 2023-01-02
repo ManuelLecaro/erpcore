@@ -1,0 +1,103 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+# types
+scalar Upload
+
+# models
+
+type User {
+  id: ID!
+  fullName: String!
+  email: String!
+  img_uri: String!
+}
+
+type Category {
+  id: ID!
+  name: String!
+  description: String!
+  Category: [Category!]
+}
+
+type Image {
+  id: ID!
+  name: String!
+  description: String!
+  url: String!
+}
+
+type Article {
+  id: ID!
+  name: String!
+  EAN: String!
+  description: String!
+  category: Category!
+  images: [Image!]
+}
+
+type Transaction {
+  id: ID!
+  date: String!
+  pdf: String!
+  user: User!
+}
+
+# inputs
+input NewUser {
+  fullName: String!
+  email: String!
+  img_uri: String
+  DateCreated: String
+}
+
+input ProfileImage {
+  userId: String
+  file: Upload
+}
+
+input NewCategory {
+  name: String!
+  description: String!
+  Category: [NewCategory!]
+}
+
+input NewImage {
+  name: String!
+  description: String!
+  url: String!
+  file: Upload
+}
+
+input NewArticle {
+  name: String!
+  EAN: String!
+  img_uri: String
+  category: NewCategory!
+  images: [NewImage!]!
+}
+
+input NewTransaction {
+  name: String!
+  pdf: Upload
+  date: String!
+}
+
+# queries
+type Query {
+  users: [User]!
+  articles: [Article]!
+  articleByID(id: ID!): Article!
+  categories: [Category]!
+  categoriesByID(id: ID!): Category!
+}
+
+# mutations
+type Mutation {
+  createUser(input: NewUser!): User!
+  uploadProfileImage(input: ProfileImage!): Boolean!
+  createArticle(input: NewArticle!): Article!
+  createCategory(input: NewCategory!): Category!
+  doTransaction(input: NewTransaction!): ID!
+}
