@@ -6,57 +6,58 @@ package graph
 
 import (
 	"context"
-	"corerp/internal/infra/graph/model"
 	"fmt"
+
+	model1 "github.com/ManuelLecaro/erpcore/internal/infra/graph/model"
 )
 
 // CreateUser is the resolver for the createUser field.
-func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (*model.User, error) {
+func (r *mutationResolver) CreateUser(ctx context.Context, input model1.NewUser) (*model1.User, error) {
 	panic(fmt.Errorf("not implemented: CreateUser - createUser"))
 }
 
 // UploadProfileImage is the resolver for the uploadProfileImage field.
-func (r *mutationResolver) UploadProfileImage(ctx context.Context, input model.ProfileImage) (bool, error) {
+func (r *mutationResolver) UploadProfileImage(ctx context.Context, input model1.ProfileImage) (bool, error) {
 	panic(fmt.Errorf("not implemented: UploadProfileImage - uploadProfileImage"))
 }
 
 // CreateArticle is the resolver for the createArticle field.
-func (r *mutationResolver) CreateArticle(ctx context.Context, input model.NewArticle) (*model.Article, error) {
+func (r *mutationResolver) CreateArticle(ctx context.Context, input model1.NewArticle) (*model1.Article, error) {
 	panic(fmt.Errorf("not implemented: CreateArticle - createArticle"))
 }
 
 // CreateCategory is the resolver for the createCategory field.
-func (r *mutationResolver) CreateCategory(ctx context.Context, input model.NewCategory) (*model.Category, error) {
+func (r *mutationResolver) CreateCategory(ctx context.Context, input model1.NewCategory) (*model1.Category, error) {
 	panic(fmt.Errorf("not implemented: CreateCategory - createCategory"))
 }
 
 // DoTransaction is the resolver for the doTransaction field.
-func (r *mutationResolver) DoTransaction(ctx context.Context, input model.NewTransaction) (string, error) {
+func (r *mutationResolver) DoTransaction(ctx context.Context, input model1.NewTransaction) (string, error) {
 	panic(fmt.Errorf("not implemented: DoTransaction - doTransaction"))
 }
 
 // Users is the resolver for the users field.
-func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
+func (r *queryResolver) Users(ctx context.Context) ([]*model1.User, error) {
 	panic(fmt.Errorf("not implemented: Users - users"))
 }
 
 // Articles is the resolver for the articles field.
-func (r *queryResolver) Articles(ctx context.Context) ([]*model.Article, error) {
+func (r *queryResolver) Articles(ctx context.Context) ([]*model1.Article, error) {
 	panic(fmt.Errorf("not implemented: Articles - articles"))
 }
 
 // ArticleByID is the resolver for the articleByID field.
-func (r *queryResolver) ArticleByID(ctx context.Context, id string) (*model.Article, error) {
+func (r *queryResolver) ArticleByID(ctx context.Context, id string) (*model1.Article, error) {
 	panic(fmt.Errorf("not implemented: ArticleByID - articleByID"))
 }
 
 // Categories is the resolver for the categories field.
-func (r *queryResolver) Categories(ctx context.Context) ([]*model.Category, error) {
+func (r *queryResolver) Categories(ctx context.Context) ([]*model1.Category, error) {
 	panic(fmt.Errorf("not implemented: Categories - categories"))
 }
 
 // CategoriesByID is the resolver for the categoriesByID field.
-func (r *queryResolver) CategoriesByID(ctx context.Context, id string) (*model.Category, error) {
+func (r *queryResolver) CategoriesByID(ctx context.Context, id string) (*model1.Category, error) {
 	panic(fmt.Errorf("not implemented: CategoriesByID - categoriesByID"))
 }
 

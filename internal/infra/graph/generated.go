@@ -5,7 +5,6 @@ package graph
 import (
 	"bytes"
 	"context"
-	"corerp/internal/infra/graph/model"
 	"embed"
 	"errors"
 	"fmt"
@@ -15,6 +14,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
+	"github.com/ManuelLecaro/erpcore/internal/infra/graph/model"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -487,7 +487,7 @@ func (ec *executionContext) field_Mutation_createArticle_args(ctx context.Contex
 	var arg0 model.NewArticle
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNNewArticle2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewArticle(ctx, tmp)
+		arg0, err = ec.unmarshalNNewArticle2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewArticle(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -502,7 +502,7 @@ func (ec *executionContext) field_Mutation_createCategory_args(ctx context.Conte
 	var arg0 model.NewCategory
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNNewCategory2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategory(ctx, tmp)
+		arg0, err = ec.unmarshalNNewCategory2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategory(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -517,7 +517,7 @@ func (ec *executionContext) field_Mutation_createUser_args(ctx context.Context, 
 	var arg0 model.NewUser
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNNewUser2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewUser(ctx, tmp)
+		arg0, err = ec.unmarshalNNewUser2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewUser(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -532,7 +532,7 @@ func (ec *executionContext) field_Mutation_doTransaction_args(ctx context.Contex
 	var arg0 model.NewTransaction
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNNewTransaction2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewTransaction(ctx, tmp)
+		arg0, err = ec.unmarshalNNewTransaction2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewTransaction(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -547,7 +547,7 @@ func (ec *executionContext) field_Mutation_uploadProfileImage_args(ctx context.C
 	var arg0 model.ProfileImage
 	if tmp, ok := rawArgs["input"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNProfileImage2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐProfileImage(ctx, tmp)
+		arg0, err = ec.unmarshalNProfileImage2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐProfileImage(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -843,7 +843,7 @@ func (ec *executionContext) _Article_category(ctx context.Context, field graphql
 	}
 	res := resTmp.(*model.Category)
 	fc.Result = res
-	return ec.marshalNCategory2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
+	return ec.marshalNCategory2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Article_category(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -894,7 +894,7 @@ func (ec *executionContext) _Article_images(ctx context.Context, field graphql.C
 	}
 	res := resTmp.([]*model.Image)
 	fc.Result = res
-	return ec.marshalOImage2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐImageᚄ(ctx, field.Selections, res)
+	return ec.marshalOImage2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐImageᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Article_images(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1077,7 +1077,7 @@ func (ec *executionContext) _Category_Category(ctx context.Context, field graphq
 	}
 	res := resTmp.([]*model.Category)
 	fc.Result = res
-	return ec.marshalOCategory2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategoryᚄ(ctx, field.Selections, res)
+	return ec.marshalOCategory2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategoryᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Category_Category(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1307,7 +1307,7 @@ func (ec *executionContext) _Mutation_createUser(ctx context.Context, field grap
 	}
 	res := resTmp.(*model.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createUser(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1427,7 +1427,7 @@ func (ec *executionContext) _Mutation_createArticle(ctx context.Context, field g
 	}
 	res := resTmp.(*model.Article)
 	fc.Result = res
-	return ec.marshalNArticle2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
+	return ec.marshalNArticle2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createArticle(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1496,7 +1496,7 @@ func (ec *executionContext) _Mutation_createCategory(ctx context.Context, field 
 	}
 	res := resTmp.(*model.Category)
 	fc.Result = res
-	return ec.marshalNCategory2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
+	return ec.marshalNCategory2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createCategory(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1616,7 +1616,7 @@ func (ec *executionContext) _Query_users(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.([]*model.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_users(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1670,7 +1670,7 @@ func (ec *executionContext) _Query_articles(ctx context.Context, field graphql.C
 	}
 	res := resTmp.([]*model.Article)
 	fc.Result = res
-	return ec.marshalNArticle2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
+	return ec.marshalNArticle2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_articles(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1728,7 +1728,7 @@ func (ec *executionContext) _Query_articleByID(ctx context.Context, field graphq
 	}
 	res := resTmp.(*model.Article)
 	fc.Result = res
-	return ec.marshalNArticle2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
+	return ec.marshalNArticle2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_articleByID(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1797,7 +1797,7 @@ func (ec *executionContext) _Query_categories(ctx context.Context, field graphql
 	}
 	res := resTmp.([]*model.Category)
 	fc.Result = res
-	return ec.marshalNCategory2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
+	return ec.marshalNCategory2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_categories(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -1851,7 +1851,7 @@ func (ec *executionContext) _Query_categoriesByID(ctx context.Context, field gra
 	}
 	res := resTmp.(*model.Category)
 	fc.Result = res
-	return ec.marshalNCategory2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
+	return ec.marshalNCategory2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_categoriesByID(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2177,7 +2177,7 @@ func (ec *executionContext) _Transaction_user(ctx context.Context, field graphql
 	}
 	res := resTmp.(*model.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Transaction_user(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4194,7 +4194,7 @@ func (ec *executionContext) unmarshalInputNewArticle(ctx context.Context, obj in
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("category"))
-			it.Category, err = ec.unmarshalNNewCategory2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategory(ctx, v)
+			it.Category, err = ec.unmarshalNNewCategory2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategory(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -4202,7 +4202,7 @@ func (ec *executionContext) unmarshalInputNewArticle(ctx context.Context, obj in
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("images"))
-			it.Images, err = ec.unmarshalNNewImage2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewImageᚄ(ctx, v)
+			it.Images, err = ec.unmarshalNNewImage2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewImageᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -4246,7 +4246,7 @@ func (ec *executionContext) unmarshalInputNewCategory(ctx context.Context, obj i
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("Category"))
-			it.Category, err = ec.unmarshalONewCategory2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategoryᚄ(ctx, v)
+			it.Category, err = ec.unmarshalONewCategory2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategoryᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -5251,11 +5251,11 @@ func (ec *executionContext) ___Type(ctx context.Context, sel ast.SelectionSet, o
 
 // region    ***************************** type.gotpl *****************************
 
-func (ec *executionContext) marshalNArticle2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v model.Article) graphql.Marshaler {
+func (ec *executionContext) marshalNArticle2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v model.Article) graphql.Marshaler {
 	return ec._Article(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNArticle2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v []*model.Article) graphql.Marshaler {
+func (ec *executionContext) marshalNArticle2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v []*model.Article) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -5279,7 +5279,7 @@ func (ec *executionContext) marshalNArticle2ᚕᚖcorerpᚋinternalᚋinfraᚋgr
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOArticle2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx, sel, v[i])
+			ret[i] = ec.marshalOArticle2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -5293,7 +5293,7 @@ func (ec *executionContext) marshalNArticle2ᚕᚖcorerpᚋinternalᚋinfraᚋgr
 	return ret
 }
 
-func (ec *executionContext) marshalNArticle2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v *model.Article) graphql.Marshaler {
+func (ec *executionContext) marshalNArticle2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v *model.Article) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -5318,11 +5318,11 @@ func (ec *executionContext) marshalNBoolean2bool(ctx context.Context, sel ast.Se
 	return res
 }
 
-func (ec *executionContext) marshalNCategory2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx context.Context, sel ast.SelectionSet, v model.Category) graphql.Marshaler {
+func (ec *executionContext) marshalNCategory2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx context.Context, sel ast.SelectionSet, v model.Category) graphql.Marshaler {
 	return ec._Category(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNCategory2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx context.Context, sel ast.SelectionSet, v []*model.Category) graphql.Marshaler {
+func (ec *executionContext) marshalNCategory2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx context.Context, sel ast.SelectionSet, v []*model.Category) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -5346,7 +5346,7 @@ func (ec *executionContext) marshalNCategory2ᚕᚖcorerpᚋinternalᚋinfraᚋg
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOCategory2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, sel, v[i])
+			ret[i] = ec.marshalOCategory2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -5360,7 +5360,7 @@ func (ec *executionContext) marshalNCategory2ᚕᚖcorerpᚋinternalᚋinfraᚋg
 	return ret
 }
 
-func (ec *executionContext) marshalNCategory2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx context.Context, sel ast.SelectionSet, v *model.Category) graphql.Marshaler {
+func (ec *executionContext) marshalNCategory2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx context.Context, sel ast.SelectionSet, v *model.Category) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -5385,7 +5385,7 @@ func (ec *executionContext) marshalNID2string(ctx context.Context, sel ast.Selec
 	return res
 }
 
-func (ec *executionContext) marshalNImage2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐImage(ctx context.Context, sel ast.SelectionSet, v *model.Image) graphql.Marshaler {
+func (ec *executionContext) marshalNImage2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐImage(ctx context.Context, sel ast.SelectionSet, v *model.Image) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -5395,22 +5395,22 @@ func (ec *executionContext) marshalNImage2ᚖcorerpᚋinternalᚋinfraᚋgraph�
 	return ec._Image(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNNewArticle2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewArticle(ctx context.Context, v interface{}) (model.NewArticle, error) {
+func (ec *executionContext) unmarshalNNewArticle2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewArticle(ctx context.Context, v interface{}) (model.NewArticle, error) {
 	res, err := ec.unmarshalInputNewArticle(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNNewCategory2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategory(ctx context.Context, v interface{}) (model.NewCategory, error) {
+func (ec *executionContext) unmarshalNNewCategory2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategory(ctx context.Context, v interface{}) (model.NewCategory, error) {
 	res, err := ec.unmarshalInputNewCategory(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNNewCategory2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategory(ctx context.Context, v interface{}) (*model.NewCategory, error) {
+func (ec *executionContext) unmarshalNNewCategory2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategory(ctx context.Context, v interface{}) (*model.NewCategory, error) {
 	res, err := ec.unmarshalInputNewCategory(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNNewImage2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewImageᚄ(ctx context.Context, v interface{}) ([]*model.NewImage, error) {
+func (ec *executionContext) unmarshalNNewImage2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewImageᚄ(ctx context.Context, v interface{}) ([]*model.NewImage, error) {
 	var vSlice []interface{}
 	if v != nil {
 		vSlice = graphql.CoerceList(v)
@@ -5419,7 +5419,7 @@ func (ec *executionContext) unmarshalNNewImage2ᚕᚖcorerpᚋinternalᚋinfra�
 	res := make([]*model.NewImage, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNNewImage2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewImage(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNNewImage2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewImage(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -5427,22 +5427,22 @@ func (ec *executionContext) unmarshalNNewImage2ᚕᚖcorerpᚋinternalᚋinfra�
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalNNewImage2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewImage(ctx context.Context, v interface{}) (*model.NewImage, error) {
+func (ec *executionContext) unmarshalNNewImage2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewImage(ctx context.Context, v interface{}) (*model.NewImage, error) {
 	res, err := ec.unmarshalInputNewImage(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNNewTransaction2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewTransaction(ctx context.Context, v interface{}) (model.NewTransaction, error) {
+func (ec *executionContext) unmarshalNNewTransaction2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewTransaction(ctx context.Context, v interface{}) (model.NewTransaction, error) {
 	res, err := ec.unmarshalInputNewTransaction(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNNewUser2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewUser(ctx context.Context, v interface{}) (model.NewUser, error) {
+func (ec *executionContext) unmarshalNNewUser2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewUser(ctx context.Context, v interface{}) (model.NewUser, error) {
 	res, err := ec.unmarshalInputNewUser(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNProfileImage2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐProfileImage(ctx context.Context, v interface{}) (model.ProfileImage, error) {
+func (ec *executionContext) unmarshalNProfileImage2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐProfileImage(ctx context.Context, v interface{}) (model.ProfileImage, error) {
 	res, err := ec.unmarshalInputProfileImage(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
@@ -5462,11 +5462,11 @@ func (ec *executionContext) marshalNString2string(ctx context.Context, sel ast.S
 	return res
 }
 
-func (ec *executionContext) marshalNUser2corerpᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v model.User) graphql.Marshaler {
+func (ec *executionContext) marshalNUser2githubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v model.User) graphql.Marshaler {
 	return ec._User(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNUser2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v []*model.User) graphql.Marshaler {
+func (ec *executionContext) marshalNUser2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v []*model.User) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -5490,7 +5490,7 @@ func (ec *executionContext) marshalNUser2ᚕᚖcorerpᚋinternalᚋinfraᚋgraph
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOUser2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx, sel, v[i])
+			ret[i] = ec.marshalOUser2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -5504,7 +5504,7 @@ func (ec *executionContext) marshalNUser2ᚕᚖcorerpᚋinternalᚋinfraᚋgraph
 	return ret
 }
 
-func (ec *executionContext) marshalNUser2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v *model.User) graphql.Marshaler {
+func (ec *executionContext) marshalNUser2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v *model.User) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -5767,7 +5767,7 @@ func (ec *executionContext) marshalN__TypeKind2string(ctx context.Context, sel a
 	return res
 }
 
-func (ec *executionContext) marshalOArticle2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v *model.Article) graphql.Marshaler {
+func (ec *executionContext) marshalOArticle2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐArticle(ctx context.Context, sel ast.SelectionSet, v *model.Article) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -5800,7 +5800,7 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	return res
 }
 
-func (ec *executionContext) marshalOCategory2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategoryᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Category) graphql.Marshaler {
+func (ec *executionContext) marshalOCategory2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategoryᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Category) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -5827,7 +5827,7 @@ func (ec *executionContext) marshalOCategory2ᚕᚖcorerpᚋinternalᚋinfraᚋg
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNCategory2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, sel, v[i])
+			ret[i] = ec.marshalNCategory2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -5847,14 +5847,14 @@ func (ec *executionContext) marshalOCategory2ᚕᚖcorerpᚋinternalᚋinfraᚋg
 	return ret
 }
 
-func (ec *executionContext) marshalOCategory2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx context.Context, sel ast.SelectionSet, v *model.Category) graphql.Marshaler {
+func (ec *executionContext) marshalOCategory2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐCategory(ctx context.Context, sel ast.SelectionSet, v *model.Category) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Category(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOImage2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐImageᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Image) graphql.Marshaler {
+func (ec *executionContext) marshalOImage2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐImageᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.Image) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -5881,7 +5881,7 @@ func (ec *executionContext) marshalOImage2ᚕᚖcorerpᚋinternalᚋinfraᚋgrap
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNImage2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐImage(ctx, sel, v[i])
+			ret[i] = ec.marshalNImage2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐImage(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -5901,7 +5901,7 @@ func (ec *executionContext) marshalOImage2ᚕᚖcorerpᚋinternalᚋinfraᚋgrap
 	return ret
 }
 
-func (ec *executionContext) unmarshalONewCategory2ᚕᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategoryᚄ(ctx context.Context, v interface{}) ([]*model.NewCategory, error) {
+func (ec *executionContext) unmarshalONewCategory2ᚕᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategoryᚄ(ctx context.Context, v interface{}) ([]*model.NewCategory, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -5913,7 +5913,7 @@ func (ec *executionContext) unmarshalONewCategory2ᚕᚖcorerpᚋinternalᚋinfr
 	res := make([]*model.NewCategory, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNNewCategory2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategory(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNNewCategory2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐNewCategory(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -5953,7 +5953,7 @@ func (ec *executionContext) marshalOUpload2ᚖgithubᚗcomᚋ99designsᚋgqlgen�
 	return res
 }
 
-func (ec *executionContext) marshalOUser2ᚖcorerpᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v *model.User) graphql.Marshaler {
+func (ec *executionContext) marshalOUser2ᚖgithubᚗcomᚋManuelLecaroᚋerpcoreᚋinternalᚋinfraᚋgraphᚋmodelᚐUser(ctx context.Context, sel ast.SelectionSet, v *model.User) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}

@@ -8,7 +8,7 @@ COPY go.sum .
 RUN go mod download
 COPY . .
 RUN go get github.com/go-delve/delve/cmd/dlv
-RUN go build -gcflags "all=-N -l" -o cmd/main .
+RUN go build -gcflags "all=-N -l" -o cmd/erpcore/main .
 
 FROM debian:buster
 COPY --from=builder /go/bin/dlv /
