@@ -9,6 +9,12 @@ const (
 	NameConfigDefaultValue = "erpcore"
 )
 
+type GlobalConfigurations struct {
+	ConfigurationAccess *viper.Viper
+}
+
+var Configurations *GlobalConfigurations
+
 // Section to handle global conf on infrastructure
 func LoadConfiguration() *viper.Viper {
 	configs := viper.New()
@@ -17,6 +23,10 @@ func LoadConfiguration() *viper.Viper {
 
 	configs.SetDefault(portConfig, portConfigDefaultValue)
 	configs.SetDefault(NameConfig, NameConfigDefaultValue)
+
+	Configurations = &GlobalConfigurations{
+		ConfigurationAccess: configs,
+	}
 
 	return configs
 }

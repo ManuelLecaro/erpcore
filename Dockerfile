@@ -1,16 +1,17 @@
-FROM golang:1.18 as builder
+# Start from golang base image
+FROM golang:1.19 as builder
 
 ENV GO111MODULE=on
 
-WORKDIR /erp
+# Setup folders
+WORKDIR /app
 COPY go.mod .
 COPY go.sum .
 RUN go mod download
 COPY . .
-RUN go get github.com/go-delve/delve/cmd/dlv
-RUN go build -gcflags "all=-N -l" -o cmd/erpcore/main .
+RUN GOOS=linux go build -a -installsuffix cgo -o main ./cmd/erpcore/
 
-FROM debian:buster
-COPY --from=builder /go/bin/dlv /
-COPY --from=builder /erp .
-CMD ["./dlv", "--listen=:40000", "--headless=true", "exec", "./main"]
+# Expose port 8080 to the outside world
+EXPOSE 8080
+
+CMD ["./main"]

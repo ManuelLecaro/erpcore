@@ -7,13 +7,6 @@ scalar Upload
 
 # models
 
-type User {
-  id: ID!
-  fullName: String!
-  email: String!
-  img_uri: String!
-}
-
 type Category {
   id: ID!
   name: String!
@@ -33,7 +26,7 @@ type Article {
   name: String!
   EAN: String!
   description: String!
-  category: Category!
+  category: [Category]!
   images: [Image!]
 }
 
@@ -41,20 +34,6 @@ type Transaction {
   id: ID!
   date: String!
   pdf: String!
-  user: User!
-}
-
-# inputs
-input NewUser {
-  fullName: String!
-  email: String!
-  img_uri: String
-  DateCreated: String
-}
-
-input ProfileImage {
-  userId: String
-  file: Upload
 }
 
 input NewCategory {
@@ -74,8 +53,14 @@ input NewArticle {
   name: String!
   EAN: String!
   img_uri: String
-  category: NewCategory!
+  Description: String!
+  categories: [CategoriesArticle]!
   images: [NewImage!]!
+}
+
+input CategoriesArticle {
+  name: String!
+  children: [CategoriesArticle!]!
 }
 
 input NewTransaction {
@@ -86,8 +71,7 @@ input NewTransaction {
 
 # queries
 type Query {
-  users: [User]!
-  articles: [Article]!
+  articles(name: String!, EAN: String!): [Article]!
   articleByID(id: ID!): Article!
   categories: [Category]!
   categoriesByID(id: ID!): Category!
@@ -95,8 +79,6 @@ type Query {
 
 # mutations
 type Mutation {
-  createUser(input: NewUser!): User!
-  uploadProfileImage(input: ProfileImage!): Boolean!
   createArticle(input: NewArticle!): Article!
   createCategory(input: NewCategory!): Category!
   doTransaction(input: NewTransaction!): ID!

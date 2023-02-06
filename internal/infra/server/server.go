@@ -25,10 +25,16 @@ type APIServer struct {
 
 // NewApp initializes the app
 func NewApp() *APIServer {
-	a := &APIServer{}
+	gin.SetMode(gin.ReleaseMode)
+	server := gin.New()
+	a := &APIServer{
+		Server:       server,
+		StatusReady:  make(chan bool),
+		StatusKilled: make(chan bool),
+	}
+
 	a.initInfrastructure()
-	a.initGraphDependencies()
-	a.initServer()
+
 	return a
 }
 
@@ -37,22 +43,6 @@ func (a *APIServer) initInfrastructure() {
 
 	a.AppName = configurations.GetString("NAME")
 	a.ServerPort = configurations.GetString("PORT")
-}
-
-func (a *APIServer) initServer() {
-	gin.SetMode(gin.ReleaseMode)
-	a.Server = gin.New()
-	a.Server.Use(
-		gin.LoggerWithConfig(gin.LoggerConfig{
-			SkipPaths: []string{
-				fmt.Sprintf("/api/%s/health-check", a.AppName),
-			},
-		}),
-		gin.Recovery(),
-	)
-	baseGroup := a.Server.Group(fmt.Sprintf("/api/%s", a.AppName))
-	apiGroup := baseGroup.Group("/v1")
-	a.initAPIRoutes(apiGroup)
 }
 
 func (a *APIServer) runServer() {

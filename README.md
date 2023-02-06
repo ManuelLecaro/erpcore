@@ -10,14 +10,12 @@ Its goal is to serve as the base of an ERP application that can manage multiple 
 -------------
 
 # Roadmap
-* [ ] Base layout
-* [ ] CI/CD files
-* [ ] GraphQL endpoint implementation
+* [x] Base layout
+* [x] CI/CD files
+* [x] GraphQL endpoint implementation
 * [ ] Articles logic
 * [ ] Categorization logic
 * [ ] Product images implementation
-* [ ] User authentication
-* [ ] User Roles
 * [ ] Search logic
 * [ ] Transactions and authentication of transactions
 

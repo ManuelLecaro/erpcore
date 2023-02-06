@@ -3,23 +3,37 @@ package main
 import (
 	"log"
 
+	"github.com/ManuelLecaro/erpcore/internal/infra/prov"
 	"github.com/ManuelLecaro/erpcore/internal/infra/server"
 	"go.uber.org/zap"
 )
 
+const AppName = "erpcore"
+
 func main() {
-	logger, err := zap.NewProduction()
+	container, err := prov.BuildContainer()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	sugar := logger.Sugar()
+	err = container.Invoke(func(graphServer *server.GraphHandler, app *server.APIServer) {
+		logger, err := zap.NewProduction()
+		if err != nil {
+			log.Fatal(err)
+		}
 
-	sugar.Info("Initializing app")
+		sugar := logger.Sugar()
 
-	app := server.NewApp()
+		sugar.Info("Initializing app")
 
-	sugar.Info("App running")
+		graphServer.Init(AppName)
 
-	app.RunApp()
+		sugar.Info("App running")
+
+		app.RunApp()
+	})
+
+	if err != nil {
+		log.Fatal(err)
+	}
 }
