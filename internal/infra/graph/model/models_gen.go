@@ -7,12 +7,17 @@ import (
 )
 
 type Article struct {
-	ID          string    `json:"id"`
-	Name        string    `json:"name"`
-	Ean         string    `json:"EAN"`
-	Description string    `json:"description"`
-	Category    *Category `json:"category"`
-	Images      []*Image  `json:"images"`
+	ID          string      `json:"id"`
+	Name        string      `json:"name"`
+	Ean         string      `json:"EAN"`
+	Description string      `json:"description"`
+	Category    []*Category `json:"category"`
+	Images      []*Image    `json:"images"`
+}
+
+type CategoriesArticle struct {
+	Name     string               `json:"name"`
+	Children []*CategoriesArticle `json:"children"`
 }
 
 type Category struct {
@@ -30,11 +35,12 @@ type Image struct {
 }
 
 type NewArticle struct {
-	Name     string       `json:"name"`
-	Ean      string       `json:"EAN"`
-	ImgURI   *string      `json:"img_uri"`
-	Category *NewCategory `json:"category"`
-	Images   []*NewImage  `json:"images"`
+	Name        string               `json:"name"`
+	Ean         string               `json:"EAN"`
+	ImgURI      *string              `json:"img_uri"`
+	Description string               `json:"Description"`
+	Categories  []*CategoriesArticle `json:"categories"`
+	Images      []*NewImage          `json:"images"`
 }
 
 type NewCategory struct {
@@ -51,33 +57,14 @@ type NewImage struct {
 }
 
 type NewTransaction struct {
-	Name string          `json:"name"`
-	PDF  *graphql.Upload `json:"pdf"`
-	Date string          `json:"date"`
-}
-
-type NewUser struct {
-	FullName    string  `json:"fullName"`
-	Email       string  `json:"email"`
-	ImgURI      *string `json:"img_uri"`
-	DateCreated *string `json:"DateCreated"`
-}
-
-type ProfileImage struct {
-	UserID *string         `json:"userId"`
-	File   *graphql.Upload `json:"file"`
+	Source   string `json:"source"`
+	Receiver string `json:"receiver"`
+	PDF      string `json:"pdf"`
+	Date     string `json:"date"`
 }
 
 type Transaction struct {
 	ID   string `json:"id"`
 	Date string `json:"date"`
 	PDF  string `json:"pdf"`
-	User *User  `json:"user"`
-}
-
-type User struct {
-	ID       string `json:"id"`
-	FullName string `json:"fullName"`
-	Email    string `json:"email"`
-	ImgURI   string `json:"img_uri"`
 }

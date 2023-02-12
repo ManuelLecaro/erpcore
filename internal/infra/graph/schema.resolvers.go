@@ -6,58 +6,126 @@ package graph
 
 import (
 	"context"
-	"corerp/internal/infra/graph/model"
 	"fmt"
+	"time"
+
+	"github.com/ManuelLecaro/erpcore/internal/core/domain"
+	model1 "github.com/ManuelLecaro/erpcore/internal/infra/graph/model"
 )
 
-// CreateUser is the resolver for the createUser field.
-func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (*model.User, error) {
-	panic(fmt.Errorf("not implemented: CreateUser - createUser"))
-}
-
-// UploadProfileImage is the resolver for the uploadProfileImage field.
-func (r *mutationResolver) UploadProfileImage(ctx context.Context, input model.ProfileImage) (bool, error) {
-	panic(fmt.Errorf("not implemented: UploadProfileImage - uploadProfileImage"))
-}
-
 // CreateArticle is the resolver for the createArticle field.
-func (r *mutationResolver) CreateArticle(ctx context.Context, input model.NewArticle) (*model.Article, error) {
-	panic(fmt.Errorf("not implemented: CreateArticle - createArticle"))
+func (r *mutationResolver) CreateArticle(ctx context.Context, input model1.NewArticle) (*model1.Article, error) {
+	currentArticle := model1.ToDomainArticleFromImput(input)
+
+	article, err := r.ArticleService.Create(ctx, *currentArticle)
+	if err != nil {
+		return nil, err
+	}
+
+	resultImages := []*model1.Image{}
+	for _, image := range article.Images {
+		resultImage := model1.CreateNewImage(fmt.Sprintf("%d", image.ID), image.Name, image.Description, image.URL)
+		resultImages = append(resultImages, resultImage)
+	}
+
+	return model1.CreateNewArticle(
+		fmt.Sprintf("%d", article.ID),
+		article.Name,
+		article.EAN, article.Description,
+		model1.ToModelCategories(article.Category),
+		resultImages,
+	), nil
 }
 
 // CreateCategory is the resolver for the createCategory field.
-func (r *mutationResolver) CreateCategory(ctx context.Context, input model.NewCategory) (*model.Category, error) {
-	panic(fmt.Errorf("not implemented: CreateCategory - createCategory"))
+func (r *mutationResolver) CreateCategory(ctx context.Context, input model1.NewCategory) (*model1.Category, error) {
+	category := input.ToDomainCategoryFromInput()
+
+	categoryResult, err := r.CategoryService.Create(ctx, *category)
+	if err != nil {
+		return nil, err
+	}
+
+	return model1.CreateNewCategory(*categoryResult), nil
 }
 
 // DoTransaction is the resolver for the doTransaction field.
-func (r *mutationResolver) DoTransaction(ctx context.Context, input model.NewTransaction) (string, error) {
-	panic(fmt.Errorf("not implemented: DoTransaction - doTransaction"))
-}
+func (r *mutationResolver) DoTransaction(ctx context.Context, input model1.NewTransaction) (string, error) {
+	transaction := domain.Transaction{
+		PDF:       input.PDF,
+		Receiver:  input.Receiver,
+		Sender:    input.Source,
+		CreatedAt: time.Now(),
+	}
 
-// Users is the resolver for the users field.
-func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
-	panic(fmt.Errorf("not implemented: Users - users"))
+	res, err := r.TransactionService.Create(ctx, transaction)
+	if err != nil {
+		return "", err
+	}
+
+	return res.PDF, nil
 }
 
 // Articles is the resolver for the articles field.
-func (r *queryResolver) Articles(ctx context.Context) ([]*model.Article, error) {
-	panic(fmt.Errorf("not implemented: Articles - articles"))
+func (r *queryResolver) Articles(ctx context.Context, name string, ean string) ([]*model1.Article, error) {
+	fields := make(map[string]string)
+
+	if name != "" {
+		fields["name"] = name
+	}
+
+	if ean != "" {
+		fields["ean"] = ean
+	}
+
+	articles, err := r.ArticleService.Search(ctx, fields)
+	if err != nil {
+		return []*model1.Article{}, nil
+	}
+
+	resArticles := []*model1.Article{}
+
+	for _, art := range articles {
+		resArticles = append(resArticles, model1.ToArticleDTO(*art))
+	}
+
+	return resArticles, nil
 }
 
 // ArticleByID is the resolver for the articleByID field.
-func (r *queryResolver) ArticleByID(ctx context.Context, id string) (*model.Article, error) {
-	panic(fmt.Errorf("not implemented: ArticleByID - articleByID"))
+func (r *queryResolver) ArticleByID(ctx context.Context, id string) (*model1.Article, error) {
+	article, err := r.ArticleService.GetByID(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+
+	return model1.ToArticleDTO(*article), nil
 }
 
 // Categories is the resolver for the categories field.
-func (r *queryResolver) Categories(ctx context.Context) ([]*model.Category, error) {
-	panic(fmt.Errorf("not implemented: Categories - categories"))
+func (r *queryResolver) Categories(ctx context.Context) ([]*model1.Category, error) {
+	categories, err := r.CategoryService.GetAll(ctx)
+	if err != nil {
+		return []*model1.Category{}, err
+	}
+
+	resCategories := []*model1.Category{}
+
+	for _, cat := range categories {
+		resCategories = append(resCategories, model1.CreateNewCategory(*cat))
+	}
+
+	return resCategories, nil
 }
 
 // CategoriesByID is the resolver for the categoriesByID field.
-func (r *queryResolver) CategoriesByID(ctx context.Context, id string) (*model.Category, error) {
-	panic(fmt.Errorf("not implemented: CategoriesByID - categoriesByID"))
+func (r *queryResolver) CategoriesByID(ctx context.Context, id string) (*model1.Category, error) {
+	category, err := r.CategoryService.GetByID(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+
+	return model1.CreateNewCategory(*category), nil
 }
 
 // Mutation returns MutationResolver implementation.
