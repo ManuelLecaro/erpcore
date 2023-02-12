@@ -8,9 +8,9 @@ import (
 
 func (ca *CategoriesArticle) ToDomainCategory() *domain.Category {
 	return &domain.Category{
-		Name:      ca.Name,
 		Children:  ToDomainCategories(ca.Children),
 		CreatedAt: time.Now(),
+		Name:      ca.Name,
 	}
 }
 

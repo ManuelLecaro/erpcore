@@ -31,3 +31,21 @@ func FromImageDTO(image Image) *domain.Image {
 		URL:         image.URL,
 	}
 }
+
+func ToDomainImageFromImput(image *NewImage) *domain.Image {
+	return &domain.Image{
+		Name:        image.Name,
+		Description: image.Description,
+		URL:         image.URL,
+	}
+}
+
+func ToDomainImageFromInputArray(imagesArray []*NewImage) (images []domain.Image) {
+	images = []domain.Image{}
+
+	for _, im := range imagesArray {
+		images = append(images, *ToDomainImageFromImput(im))
+	}
+
+	return
+}

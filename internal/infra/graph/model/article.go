@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/ManuelLecaro/erpcore/internal/core/domain"
 )
@@ -25,5 +26,16 @@ func ToArticleDTO(article domain.Article) *Article {
 		Description: article.Description,
 		Category:    ToModelCategories(article.Category),
 		Images:      []*Image{},
+	}
+}
+
+func ToDomainArticleFromImput(input NewArticle) *domain.Article {
+	return &domain.Article{
+		Category:    ToDomainCategories(input.Categories),
+		Images:      ToDomainImageFromInputArray(input.Images),
+		CreatedAt:   time.Now(),
+		Name:        input.Name,
+		EAN:         input.Ean,
+		Description: input.Description,
 	}
 }

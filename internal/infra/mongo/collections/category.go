@@ -113,3 +113,16 @@ func (ac *CategoryCollection) CreateMany(ctx context.Context, categories []domai
 
 	return categories, nil
 }
+
+func (ac *CategoryCollection) Get(ctx context.Context) ([]*domain.Category, error) {
+	categories := []*domain.Category{}
+
+	cur, err := ac.mongoConnection.Connection.Collection(CategoryCollectionName).Find(ctx, bson.D{})
+	if err != nil {
+		return nil, err
+	}
+
+	cur.All(ctx, &categories)
+
+	return categories, nil
+}

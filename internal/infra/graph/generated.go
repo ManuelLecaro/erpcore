@@ -3884,18 +3884,26 @@ func (ec *executionContext) unmarshalInputNewTransaction(ctx context.Context, ob
 		asMap[k] = v
 	}
 
-	fieldsInOrder := [...]string{"name", "pdf", "date"}
+	fieldsInOrder := [...]string{"source", "receiver", "pdf", "date"}
 	for _, k := range fieldsInOrder {
 		v, ok := asMap[k]
 		if !ok {
 			continue
 		}
 		switch k {
-		case "name":
+		case "source":
 			var err error
 
-			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("name"))
-			it.Name, err = ec.unmarshalNString2string(ctx, v)
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("source"))
+			it.Source, err = ec.unmarshalNString2string(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "receiver":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("receiver"))
+			it.Receiver, err = ec.unmarshalNString2string(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -3903,7 +3911,7 @@ func (ec *executionContext) unmarshalInputNewTransaction(ctx context.Context, ob
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("pdf"))
-			it.PDF, err = ec.unmarshalOUpload2ᚖgithubᚗcomᚋ99designsᚋgqlgenᚋgraphqlᚐUpload(ctx, v)
+			it.PDF, err = ec.unmarshalNString2string(ctx, v)
 			if err != nil {
 				return it, err
 			}

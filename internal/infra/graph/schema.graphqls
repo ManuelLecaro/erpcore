@@ -64,8 +64,9 @@ input CategoriesArticle {
 }
 
 input NewTransaction {
-  name: String!
-  pdf: Upload
+  source: String!
+  receiver: String!
+  pdf: String!
   date: String!
 }
 

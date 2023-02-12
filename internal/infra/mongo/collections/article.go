@@ -7,6 +7,7 @@ import (
 	"github.com/ManuelLecaro/erpcore/internal/core/ports/repositories"
 	"github.com/ManuelLecaro/erpcore/internal/infra/mongo"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 const ArticleCollectionName = "article"
@@ -42,14 +43,20 @@ func (ac *ArticleCollection) GetByID(ctx context.Context, id string) (*domain.Ar
 	return article, nil
 }
 
-func (ac *ArticleCollection) Search(ctx context.Context, fields ...string) ([]*domain.Article, error) {
-	filter := bson.M{"id": fields}
+func (ac *ArticleCollection) Search(ctx context.Context, fields map[string]string) ([]*domain.Article, error) {
+	filter := bson.D{}
 	articles := []*domain.Article{}
 
-	err := ac.mongoConnection.Connection.Collection(ArticleCollectionName).FindOne(ctx, filter).Decode(articles)
+	for field, value := range fields {
+		filter = append(filter, primitive.E{Key: field, Value: value})
+	}
+
+	cur, err := ac.mongoConnection.Connection.Collection(ArticleCollectionName).Find(ctx, filter)
 	if err != nil {
 		return nil, err
 	}
+
+	cur.All(ctx, &articles)
 
 	return articles, nil
 }

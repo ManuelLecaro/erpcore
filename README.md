@@ -13,11 +13,12 @@ Its goal is to serve as the base of an ERP application that can manage multiple 
 * [x] Base layout
 * [x] CI/CD files
 * [x] GraphQL endpoint implementation
-* [ ] Articles logic
-* [ ] Categorization logic
+* [x] Articles logic
+* [x] Categorization logic
 * [ ] Product images implementation
-* [ ] Search logic
+* [x] Search logic
 * [ ] Transactions and authentication of transactions
+* [ ] Testing and CI automation
 
 
 ------------
@@ -31,3 +32,5 @@ Its goal is to serve as the base of an ERP application that can manage multiple 
 5. Docker / Docker-compose
 
 # Installation
+
+1. go mod vendor

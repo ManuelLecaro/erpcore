@@ -24,8 +24,8 @@ func (c *Article) Create(ctx context.Context, article domain.Article) (*domain.A
 	return c.collection.Create(ctx, article)
 }
 
-func (c *Article) Search(ctx context.Context, fields ...string) ([]*domain.Article, error) {
-	return c.collection.Search(ctx, fields...)
+func (c *Article) Search(ctx context.Context, fields map[string]string) ([]*domain.Article, error) {
+	return c.collection.Search(ctx, fields)
 }
 
 func (c *Article) GetByID(ctx context.Context, id string) (*domain.Article, error) {

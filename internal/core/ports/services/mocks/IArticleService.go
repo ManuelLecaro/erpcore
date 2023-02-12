@@ -61,19 +61,12 @@ func (_m *IArticleService) GetByID(ctx context.Context, id string) (*domain.Arti
 }
 
 // Search provides a mock function with given fields: ctx, fields
-func (_m *IArticleService) Search(ctx context.Context, fields ...string) ([]*domain.Article, error) {
-	_va := make([]interface{}, len(fields))
-	for _i := range fields {
-		_va[_i] = fields[_i]
-	}
-	var _ca []interface{}
-	_ca = append(_ca, ctx)
-	_ca = append(_ca, _va...)
-	ret := _m.Called(_ca...)
+func (_m *IArticleService) Search(ctx context.Context, fields map[string]string) ([]*domain.Article, error) {
+	ret := _m.Called(ctx, fields)
 
 	var r0 []*domain.Article
-	if rf, ok := ret.Get(0).(func(context.Context, ...string) []*domain.Article); ok {
-		r0 = rf(ctx, fields...)
+	if rf, ok := ret.Get(0).(func(context.Context, map[string]string) []*domain.Article); ok {
+		r0 = rf(ctx, fields)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).([]*domain.Article)
@@ -81,8 +74,8 @@ func (_m *IArticleService) Search(ctx context.Context, fields ...string) ([]*dom
 	}
 
 	var r1 error
-	if rf, ok := ret.Get(1).(func(context.Context, ...string) error); ok {
-		r1 = rf(ctx, fields...)
+	if rf, ok := ret.Get(1).(func(context.Context, map[string]string) error); ok {
+		r1 = rf(ctx, fields)
 	} else {
 		r1 = ret.Error(1)
 	}

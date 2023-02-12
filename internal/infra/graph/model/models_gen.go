@@ -57,9 +57,10 @@ type NewImage struct {
 }
 
 type NewTransaction struct {
-	Name string          `json:"name"`
-	PDF  *graphql.Upload `json:"pdf"`
-	Date string          `json:"date"`
+	Source   string `json:"source"`
+	Receiver string `json:"receiver"`
+	PDF      string `json:"pdf"`
+	Date     string `json:"date"`
 }
 
 type Transaction struct {

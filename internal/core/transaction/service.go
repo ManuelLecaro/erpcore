@@ -21,6 +21,6 @@ func NewTransactionService(repo repositories.ITransactionRepository) *Transactio
 }
 
 // Creates a new Transaction.
-func (c *Transaction) Create(ctx context.Context, category domain.Transaction) (*domain.Transaction, error) {
-	return c.collection.Create(ctx, category)
+func (c *Transaction) Create(ctx context.Context, transaction domain.Transaction) (*domain.Transaction, error) {
+	return c.collection.Create(ctx, transaction)
 }

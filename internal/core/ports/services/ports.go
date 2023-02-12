@@ -12,12 +12,14 @@ import (
 
 type IArticleService interface {
 	Create(ctx context.Context, article domain.Article) (*domain.Article, error)
-	Search(ctx context.Context, fields ...string) ([]*domain.Article, error)
+	Search(ctx context.Context, fields map[string]string) ([]*domain.Article, error)
 	GetByID(ctx context.Context, id string) (*domain.Article, error)
 }
 
 type ICategoryService interface {
 	Create(ctx context.Context, article domain.Category) (*domain.Category, error)
+	GetByID(ctx context.Context, id string) (*domain.Category, error)
+	GetAll(ctx context.Context) ([]*domain.Category, error)
 }
 
 type ITransactionService interface {

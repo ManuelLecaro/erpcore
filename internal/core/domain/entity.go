@@ -15,36 +15,37 @@ type User struct {
 }
 
 type Article struct {
-	ID          uint64 `bson:"id"`
+	Category    []*Category
+	Images      []Image
+	CreatedAt   time.Time `bson:"created_at"`
 	Name        string
 	EAN         string
 	Description string
-	Images      []Image
-	Category    []*Category
-	CreatedAt   time.Time `bson:"created_at"`
+	ID          uint64 `bson:"id"`
 }
 
 type Image struct {
-	ID          uint64
 	Name        string
 	Description string
 	URL         string
 	File        io.ReadSeeker
+	ID          uint64
 }
 
 type Category struct {
-	ID          string `bson:"id,omitempty"`
+	Children    []*Category
+	CreatedAt   time.Time `bson:"created_at"`
+	ID          string    `bson:"id,omitempty"`
 	Description string
 	Path        string
 	Name        string
-	Children    []*Category
-	CreatedAt   time.Time `bson:"created_at"`
 }
 
 type Transaction struct {
 	ID        uint64 `bson:"id"`
 	PDF       string
-	User      User
+	Receiver  string
+	Sender    string
 	CreatedAt time.Time `bson:"created_at"`
 }
 

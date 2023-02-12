@@ -30,8 +30,6 @@ func (c *Category) Create(ctx context.Context, category domain.Category) (*domai
 
 	createMaterializedPath(ctx, &category)
 
-	wg.Wait()
-
 	categories := []domain.Category{}
 
 	flatCategories(ctx, category, &categories)
@@ -46,15 +44,11 @@ func (c *Category) Create(ctx context.Context, category domain.Category) (*domai
 func createMaterializedPath(ctx context.Context, category *domain.Category) bool {
 	currentPath := category.Path
 
-	defer wg.Done()
-
-	wg.Add(1)
-
 	for _, cat := range category.Children {
 		cat.ID = uuid.New().String()
 		cat.Path = currentPath + category.Name + ","
 
-		go createMaterializedPath(ctx, cat)
+		createMaterializedPath(ctx, cat)
 	}
 
 	return true
@@ -63,8 +57,8 @@ func createMaterializedPath(ctx context.Context, category *domain.Category) bool
 func flatCategories(ctx context.Context, category domain.Category, categoriesArray *[]domain.Category) bool {
 	*categoriesArray = append(*categoriesArray, category)
 
-	for i := range category.Children {
-		flatCategories(ctx, *category.Children[i], categoriesArray)
+	for _, cat := range category.Children {
+		flatCategories(ctx, *cat, categoriesArray)
 	}
 
 	return true
@@ -72,4 +66,8 @@ func flatCategories(ctx context.Context, category domain.Category, categoriesArr
 
 func (c *Category) GetByID(ctx context.Context, id string) (*domain.Category, error) {
 	return c.collection.GetByID(ctx, id)
+}
+
+func (c *Category) GetAll(ctx context.Context) ([]*domain.Category, error) {
+	return c.collection.Get(ctx)
 }
